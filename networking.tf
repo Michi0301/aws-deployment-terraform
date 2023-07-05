@@ -10,9 +10,9 @@ resource "aws_vpc" "demo_app_vpc" {
 
 // Create subnets
 resource "aws_subnet" "public_subnet_a" {
-  vpc_id            = aws_vpc.demo_app_vpc.id
-  cidr_block        = "10.1.1.0/24"
-  availability_zone = var.availability_zone_a
+  vpc_id                  = aws_vpc.demo_app_vpc.id
+  cidr_block              = "10.1.1.0/24"
+  availability_zone       = var.availability_zone_a
   map_public_ip_on_launch = true
 
   tags = {
@@ -33,7 +33,7 @@ resource "aws_security_group" "demo_app_web_security_group" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   ingress {
     description = "HTTP from VPC"
     from_port   = 80
